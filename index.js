@@ -25,7 +25,7 @@ function generateInitialMatrix() {
 }
 
 function renderMatrix(containerName) {
-    let matrixHtml = "<table>";
+    let matrixHtml = "<table border='1px' cellpadding='2px' cellspacing='2px'>";
     for (let i=0; i<matrix.length; i++) {
         matrixHtml +="<tr>";
         for (let j=0; j<matrix[i].length; j++) {
@@ -37,13 +37,15 @@ function renderMatrix(containerName) {
     document.getElementById(containerName).innerHTML = matrixHtml;
 }
 
-/*
-var d2Array = [];
-for (let i=0; i<d2Array.length; i++) {
-    d2Array[i] = [];
-    var randomNumber = Math.floor(Math.random() * 100);
-   for (let j=0; j<=randomNumber; j++) {
-        d2Array[i][j] = i+j;
+function onChangeClick() {
+    changeMatrix(matrix);
+    renderMatrix("changed-matrix");
+}
+
+function changeMatrix(renderedMatrix) {
+    for (let i=0; i<renderedMatrix.length; i++) {
+        for (let j=0; j<renderedMatrix[i].length; j++) {
+            renderedMatrix[i][i] = 0;
+        }
     }
 }
-console.log(d2Array);*/
